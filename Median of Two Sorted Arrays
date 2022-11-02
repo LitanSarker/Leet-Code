@@ -1,0 +1,20 @@
+public class Solution {
+    public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
+         int[] sortedArr = nums1.Concat(nums2).ToArray();
+            Array.Sort(sortedArr);
+
+            double res = 0.0;
+            int midIndex = 0;
+            if (sortedArr.Length % 2 == 0)
+            {
+                 midIndex = sortedArr.Length / 2;
+                res = (Convert.ToDouble(sortedArr[midIndex - 1]) + Convert.ToDouble(sortedArr[midIndex])) / 2;
+            }
+            else
+            {
+                midIndex = (sortedArr.Length - 1) / 2;
+                res = sortedArr[midIndex];
+            }
+        return res;
+    }
+}
