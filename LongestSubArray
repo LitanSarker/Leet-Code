@@ -1,0 +1,30 @@
+public static int longestSubarray(List<int> arr)
+        {
+            List<int> set = new List<int>();
+            int n = arr.Count;
+            int max = 1;
+            int i, j;
+            for (i = 0; i < n - 1; i++)
+            {
+                set.Add(arr[i]);
+                for (j = i + 1; j < n;)
+                {
+                    if (Math.Abs(arr[i] - arr[j]) < 2)
+                    {
+                        if (!set.Contains(arr[j]))
+                        {
+                            if (set.Count == 2)
+                                break;
+                            else
+                                set.Add(arr[j]);
+                        }
+                    }
+                    else
+                        break;
+                    j++;
+                }
+                max = Math.Max(max, j - i);
+                set.Clear();
+            }
+            return max;
+        }
